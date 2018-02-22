@@ -1,0 +1,33 @@
+
+//Break Points
+$breakpoint-alpha: 1020px; // adjust to your needs
+$breakpoint-md: 767px;
+
+//App Colors
+
+$app-orange: #ea5521;
+$app-purple: #6a67ce;
+$app-purple-dark: #1A0628;
+$app-green: #24b57a;
+$app-green-dark: #188257;
+$app-teal: #38A6A6;
+
+$le-blue: #1aa2dc;
+$le-blue-highlight: lighten($le-blue, 48%);
+$danger: #F83A22;
+$warning: #f0ad4e;
+$success: #99CC33;
+
+$gray-lightest: #f2f5f6;
+$gray-dark: #59646d;
+$gray-medium: lighten($gray-dark, 10%);
+
+$slate-dark: #3D4952;
+$slate-darkest: #30343c;
+
+$border-color-light: darken($gray-lightest, 12%);
+
+$black: black;
+
+//Fonts
+$serif: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;

@@ -1,0 +1,483 @@
+//================== Modules =====================//
+
+//==Responsive Data Table
+
+.app-data-table {
+  width: 100%;
+  //min-width: 300px;
+  &.rounded {
+    @include border-radius(3px);
+  }
+
+  .table-headers {
+    background: $gray-lightest;
+  }
+  tr {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background: lighten($gray-lightest, 2%);
+    &:nth-child(2n) {
+      background: white;
+    }
+    &:first-child {
+      border-top: 0;
+    }
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  th {
+    display: none; // for accessibility, use a visually hidden method here instead.
+  }
+
+  td {
+    display: block;
+
+    &:first-child {
+      padding-top: .5em;
+    }
+    &:last-child {
+      padding-bottom: .5em;
+    }
+
+    &:before {
+      content: attr(data-th)": ";
+      font-weight: bold;
+      width: 7.5em;
+      display: inline-block;
+
+      @media (min-width: $breakpoint-alpha) {
+        display: none;
+      }
+    }
+  }
+
+  th, td {
+    text-align: left;
+
+    @media (min-width: $breakpoint-alpha) {
+      display: table-cell;
+      padding: .25em .5em;
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+
+  }
+}
+
+
+// presentational styling
+
+.app-data-table {
+  background: white;
+  color: $gray-dark;
+  overflow: hidden;
+  font-size: .95em;
+  tr {
+    border-color: $border-color-light;
+  }
+  th, td {
+    margin: .5em 1em;
+    @media (min-width: $breakpoint-alpha) {
+      padding: 1em !important;
+    }
+  }
+  th, td:before {
+    color: $slate-dark;
+  }
+
+
+  .status-highlight {
+    font-weight: bold;
+    text-transform: capitalize;
+
+    &.status-started {
+      position: relative;
+      background: lighten($app-purple, 5%);
+      color: lighten($app-purple, 35%);
+      &:before {
+        display: block;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+        background-image: -o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+        background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+
+        -webkit-animation: progress-bar-stripes 2s linear infinite;
+        -o-animation: progress-bar-stripes 2s linear infinite;
+        animation: progress-bar-stripes 2s linear infinite;
+
+        -webkit-background-size: 40px 40px;
+        background-size: 40px 40px;
+      }
+    }
+
+    &.status-ready {
+      background: lighten($success, 25%);
+      color: $slate-dark;
+    }
+
+    &.status-cancelled {
+      // background: lighten($danger, 30%);
+      color: $danger;
+    }
+
+    &.status-free {
+      //  background: lighten($le-blue, 40%);
+      color: $le-blue;
+    }
+
+    &.status-pending {
+      //  background: lighten($slate-dark, 50%);
+      color: $slate-dark;
+    }
+
+  }
+
+  .action-links a {
+    font-size: 14px;
+  }
+
+  .action-icons {
+    a {
+      display: inline-block;
+      padding: 5px;
+      font-size: 16px;
+      &.disable-item {
+        &:hover {
+          color: $danger !important;
+        }
+      }
+      &.enable-item {
+        &:hover {
+          color: $success !important;
+        }
+      }
+    }
+  }
+
+}
+//==END Responsive Data Table
+
+
+//===Popup Module
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  z-index: 9998;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.app-popup {
+  background: $gray-lightest;
+  //max-height: calc(100vh - 110px);
+  overflow-y: auto;
+  width: 400px;
+  position: relative;
+  display: none;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2), -1px 0 4px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  top: 50px;
+  left: calc(50vw - 200px);
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  opacity: 0;
+  transition: all .4s cubic-bezier(0.845, -0.265, 0.190, 1.280);
+  @media screen and (max-width: 479px) {
+    width: 300px;
+    top: 25px;
+    left: calc(50vw - 160px);
+  }
+
+  &.medium-width {
+    width: 600px;
+    left: calc(50vw - 300px);
+    @media screen and (max-width: 639px) {
+      width: 400px;
+      left: calc(50vw - 200px);
+    }
+    @media screen and (max-width: 479px) {
+      width: 300px;
+      top: 25px;
+      left: calc(50vw - 160px);
+    }
+  }
+
+
+}//app-popup
+
+.app-popup.popup-open {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  opacity: 1
+}
+
+.app-popup-header {
+  padding: 12px 15px;
+  font-size: 21px;
+  color: $slate-dark;
+  font-weight: 600;
+  background: white;
+}
+
+.app-popup-body {
+  padding: 15px;
+}
+
+.app-popup-footer {
+  margin-top: 30px;
+  .popup-action {
+    display: block;
+    padding: 15px 10px;
+    float: left;
+    border: 0;
+    transition: all .25s ease;
+
+    //Action Button Sizes
+    &.action-full {
+      width: 100%;
+      float: none;
+    }
+    &.action-large {
+      width: 65%;
+    }
+    &.action-small {
+      width: 35%;
+    }
+    &.action-half {
+      width: 50%;
+    }
+    &.action-third {
+      width: 33.33333333333333333333333333%;
+    }
+
+    //Action Button Appearance
+    &.primary-action {
+      background: $app-green;
+      color: white;
+      &:hover {
+        background: darken($app-green, 10%);
+        color: white;
+      }
+    }
+    &.secondary-action {
+      background: white;
+      color: $danger;
+      &:hover {
+        background: $danger;
+        color: white;
+      }
+    }
+
+  }
+
+}
+
+
+body.modal-open {
+  overflow: hidden !important; //Prevent body from scrolling behind popup
+}
+
+//==End Popup Module
+
+//=== Radial progress/percent indicators
+
+.radial-bar {
+  margin: auto;
+  width: 200px;
+  height: 200px;
+  background-color: rgba(36,181,122,0.225);
+  border-radius: 50%;
+
+
+  .radial-bar__mask {
+    clip: rect(0px, 200px, 200px, 100px);
+    -webkit-backface-visibility: hidden;
+    transition: -webkit-transform 1s;
+    transition: -ms-transform 1s;
+    transition: transform 1s;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  .radial-bar__fill {
+    -webkit-backface-visibility: hidden;
+    transition: -webkit-transform 1s;
+    transition: -ms-transform 1s;
+    transition: transform 1s;
+    border-radius: 50%;
+    clip: rect(0px, 100px, 200px, 0px);
+    background-color: $app-green;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+  }
+
+  .radial-bar__inset {
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    margin-left: 30px;
+    margin-top: 30px;
+    background-color: lighten($slate-dark, 5%);
+    border-radius: 50%;
+    display: table-cell;
+  }
+
+  .radial-bar__percent {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 27px;
+  }
+
+  &.radial-small {
+    width: 100px;
+    height: 100px;
+
+    .radial-bar__mask {
+      clip: rect(0px, 100px, 100px, 50px);
+      -webkit-backface-visibility: hidden;
+      transition: -webkit-transform 1s;
+      transition: -ms-transform 1s;
+      transition: transform 1s;
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .radial-bar__fill {
+      -webkit-backface-visibility: hidden;
+      transition: -webkit-transform 1s;
+      transition: -ms-transform 1s;
+      transition: transform 1s;
+      border-radius: 50%;
+      clip: rect(0px, 50px, 100px, 0px);
+      background-color: $app-green;
+      width: 100px;
+      height: 100px;
+      position: absolute;
+    }
+
+    .radial-bar__inset {
+      width: 70px;
+      height: 70px;
+      position: absolute;
+      margin-left: 15px;
+      margin-top: 15px;
+    }
+
+    .radial-bar__percent {
+      font-size: 16px;
+    }
+  }
+
+} //radial-bar
+
+
+//Full screen overlay window
+
+.full-screen-overlay {
+  //display: none;
+  visibility: hidden;
+  opacity: 0;
+  background: $gray-lightest;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  right: 0;
+  overflow: auto;
+  transition: all .3s ease;
+  .full-details-section {
+    display: none;
+  }
+}
+.full-screen-overlay.display-overlay {
+  //display: block;
+  opacity: 1;
+  visibility: visible;
+  left: 0;
+}
+
+.overlay-header-wrap {
+  @media (min-width: $breakpoint-alpha) {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+  }
+}
+
+.overlay-header {
+  position: relative;
+  background: white;
+  padding: 20px 80px 20px 20px;
+  overflow: hidden;
+  border-bottom: 1px solid $border-color-light;
+  .overlay-header-close {
+    display: block;
+    font-size: 24px;
+    font-weight: 300;
+    color: $slate-dark;
+    border-left: 1px solid $border-color-light;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 60px;
+    text-align: center;
+    line-height: 100%;
+    &:hover, &:focus, &:active {
+      text-decoration: none;
+      background: $gray-lightest;
+    }
+  }
+  .overlay-save-btn {
+    padding: 10px 14px !important;
+    font-size: 14px;
+    margin-bottom: -10px;
+    margin-top: -10px;
+    margin-right: -8px;
+  }
+}
+
+#overlay-wrapper-body {
+  @media (min-width: $breakpoint-alpha) {
+    position: relative;
+    top: 64px;
+  }
+}
+
+body.overlay-open {
+  overflow: hidden; //Prevent body from scrolling when fullscreen overlay is present
+}
