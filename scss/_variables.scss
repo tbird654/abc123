@@ -5,6 +5,9 @@ $breakpoint-md: 767px;
 
 //App Colors
 
+$tb-yellow: #ffc62c;
+
+
 $app-orange: #ea5521;
 $app-purple: #6a67ce;
 $app-purple-dark: #1A0628;
@@ -30,4 +33,16 @@ $border-color-light: darken($gray-lightest, 12%);
 $black: black;
 
 //Fonts
-$serif: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+
+@font-face {
+  font-family: 'league_spartanregular';
+  src: url('fonts/league-spartan/leaguespartan-bold-webfont.woff2') format('woff2'),
+  url('fonts/league-spartan/leaguespartan-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+$serif: 'Libre Baskerville',TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+$sans: 'Montserrat', "Helvetica Neue", Helvetica, Arial, sans-serif;
+$sans-alt: 'league_spartanregular', 'Montserrat', "Helvetica Neue", Helvetica, Arial, sans-serif;

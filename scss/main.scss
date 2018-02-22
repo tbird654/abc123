@@ -3,18 +3,29 @@
 @import "compass/css3/border-radius";
 @import "compass/css3/images";
 
+//============ Mixins,variables,modules, buttons, etc. =================
+@import "variables";
+
 // ====== Resets & Base =========
 @import "normalize";
 @import "base";
-
-//============ Mixins,variables,modules, buttons, etc. =================
-@import "variables";
 
 @import "modules";
 @import "buttons";
 
 
 //--------------> General Classes
+///---- type
+.fw-400 {
+  font-weight: 400;
+}
+.fw-800 {
+  font-weight: 800;
+}
+
+.gray {
+  color: $gray-medium;
+}
 
 // ---------------> Primary Layout
 
@@ -31,22 +42,257 @@
   height: 100vh;
 }
 .hero-left {
-  background: #eee;
+  background: white;
   width: 40%;
+  .hero-left-bottom {
+    text-align: center;
+    font-family: "league_spartanregular","Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 900;
+    letter-spacing: 20px;
+    font-size: 150px;
+    position: absolute;
+    line-height: 0;
+    bottom: 0;
+    left: -8px;
+    opacity: .1;
+  }
 }
 .hero-right {
-  background: #222;
+  display: flex;
+  flex-direction: column;
+  background: #efefef;
   width: 60%;
   img {
     width: 100%;
     height: auto;
     max-width: 100%;
   }
-}
-.brand {
+  .hero-item-bottom {
+    position: relative;
+    flex-grow: 1;
+    background: $tb-yellow;
+    .hero-item-button {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      right: 0;
+      width: calc(50% + 30px);
+      height: 100%;
+      .hero-item-button-top {
+        //font-family: $sans;
+        font-weight: 800;
+        font-size: 1.8rem;
+      }
+      .hero-item-button-bottom {
+        font-family: $serif;
+        font-size: 1rem;
+      }
+    }
+    .hero-item-panel {
+      position: absolute;
+      bottom: 0;
+      left: -30px;
+      background: black;
+      outline: 30px solid rgba(255, 197, 78, .35);
+      width: 50%;
+      padding: 40px;
+     // min-height: 300px;
+      ul {
+        list-style: none;
+       // font-family: $sans;
+        color: white;
+        padding: 0;
+        margin: 0;
+        li {
+          padding: 7px 0;
+        }
+      }
+    }
+  }
 }
 
+.hero-item {
+  &.hero-item-content {
+    width: 80%;
+    margin: 30px auto 0;
+    .content-title {
+      position: relative;
+      left: -5px;
+      font-family: $sans-alt;
+      font-weight: 800;
+      font-size: 4.2rem;
+    }
+    .content-description {
+      margin-top: 20px;
+      font-family: $serif;
+      font-size: .95rem;
+      line-height: 1.75rem;
+    }
+  }
+}
+
+.hero-item-nav {
+  width: 80%;
+  margin: auto;
+  a {
+    text-decoration: none;
+    color: black;
+    font-size: 3.0rem;
+  }
+}
+
+
+.hero-left-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px;
+  .brand {
+      //font-family: $sans;
+      .brand-icon {
+        display: inline-block;
+        position: relative;
+        top: -3px;
+      }
+  }
+
+  &.attached {
+    background: white;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    z-index: 1000;
+  }
+}
+
+.hero-menu-trigger {
+  width: 20px;
+  height: 20px;
+  padding: 10px;
+}
+
+#hamburger-icon {
+  width: 20px;
+  height: 12px;
+  position: relative;
+  margin: -10px 0 0 -10px;
+}
+#hamburger-icon .line {
+  display: block;
+  background: #595a59;
+  width: 10px;
+  height: 2px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 1px;
+  cursor: pointer;
+  transition: all .4s;
+  -webkit-transition: all .4s;
+  -moz-transition: all .4s;
+  &.line-2 {
+    top: 50%;
+    width: 20px;
+  }
+  &.line-3 {
+    top: 100%;
+    width: 15px;
+  }
+}
+
+#hamburger-icon:hover {
+  .line {
+    width: 100% !important;
+  }
+}
+
+
 .main-menu {
+  visibility: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  background: black;
+  color: white;
+  transition: height .2s ease-out;
+  z-index: 2000;
+  &.menu-active {
+    visibility: visible;
+    display: block;
+    height: 100%;
+  }
+  .menu-header {
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .brand {
+      position: relative;
+      top: -7px;
+    }
+  }
+  .close-menu {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255, .3);
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 300;
+    @include border-radius(50%);
+    cursor: pointer;
+    transition: all .2s ease;
+    .close-icon {
+      position: relative;
+      top: -2px;
+      transition: all .2s ease;
+    }
+
+    &:hover {
+     // background: white;
+      border: 4px solid rgba(255,255,255, .3);
+      color: $tb-yellow;
+      .close-icon {
+        top: -4px;
+      }
+
+    }
+  }
+
+  .menu-body {
+    display: flex;
+    .menu-left {
+      width: 50%;
+      padding: 40px;
+    }
+    .menu-right {
+      width: 50%;
+      padding: 40px;
+    }
+  }
+
+  .menu-links {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        padding: 5px 0;
+        a {
+          font-size: 2.4rem;
+          font-weight: 800;
+          padding: 5px 0;
+        }
+      }
+    }
+  }
 
 }
 
