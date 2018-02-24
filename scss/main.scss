@@ -15,6 +15,56 @@
 
 
 //--------------> General Classes
+
+.text-center {
+	text-align: center;
+}
+
+.mt-10 {
+	margin-top: 10px;
+}
+.mt-15 {
+	margin-top: 15px;
+}
+.mt-20 {
+	margin-top: 20px;
+}
+.mt-25 {
+	margin-top: 25px;
+}
+.mt-30 {
+	margin-top: 30px;
+}
+.mt-40 {
+	margin-top: 40px;
+}
+.mt-50 {
+	margin-top: 50px;
+}
+.mt-75 {
+	margin-top: 75px;
+}
+.mt-100 {
+	margin-top: 100px;
+}
+
+.mt-200 {
+	margin-top: 200px;
+}
+
+.mt-300 {
+	margin-top: 300px;
+}
+
+.mt-400 {
+	margin-top: 400px;
+}
+
+.limit-width-600 {
+	max-width: 600px;
+	margin: auto;
+}
+
 ///---- type
 .fw-400 {
   font-weight: 400;
@@ -25,6 +75,26 @@
 
 .gray {
   color: $gray-medium;
+}
+
+//headings
+.section-headline {
+	font-family: $sans-alt;
+	font-weight: 800;
+}
+h1.section-headline {
+	font-size: 2.65rem;
+}
+
+h2.section-headline {
+	font-size: 2.0rem;
+}
+
+.section-subhead {
+	font-family: $serif;
+	font-size: .95rem;
+    line-height: 1.75rem;
+    font-weight: 400;
 }
 
 // ---------------> Primary Layout
@@ -45,16 +115,21 @@
   background: white;
   width: 40%;
   .hero-left-bottom {
-    text-align: center;
-    font-family: "league_spartanregular","Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 900;
-    letter-spacing: 20px;
-    font-size: 150px;
+   // text-align: center;
+   	width: 40%;
+    font-family: $sans;
+    font-weight: 300;
+    letter-spacing: 8px;
+    //font-size: 150px;
     position: absolute;
-    line-height: 0;
+    line-height: 8rem;
     bottom: 0;
-    left: -8px;
-    opacity: .1;
+   // left: -8px;
+   // opacity: .1;
+    .timeline {
+	    width: 80%;
+	    margin: auto;
+    }
   }
 }
 .hero-right {
@@ -66,11 +141,16 @@
     width: 100%;
     height: auto;
     max-width: 100%;
+    filter: grayscale(1) contrast(2.5);
+    transition: all .5s ease;
+    &:hover {
+	    filter: grayscale(0) contrast(1);
+    } 
   }
   .hero-item-bottom {
     position: relative;
     flex-grow: 1;
-    background: $tb-yellow;
+    background: $tb-yellow-light;
     .hero-item-button {
       position: absolute;
       display: flex;
@@ -113,10 +193,24 @@
   }
 }
 
+.hero-content-wrap {
+	width: 80%;
+	margin: 30px auto 0;
+	position: relative;
+}
+
 .hero-item {
   &.hero-item-content {
-    width: 80%;
-    margin: 30px auto 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    transition: all .5s ease;
+    &.active {
+    	position: relative;
+	    opacity: 1;
+	    visibility: visible;
+    }
     .content-title {
       position: relative;
       left: -5px;
@@ -173,6 +267,7 @@
   width: 20px;
   height: 20px;
   padding: 10px;
+  cursor:pointer;
 }
 
 #hamburger-icon {
@@ -302,5 +397,6 @@
 //_____ Footer
 
 // ---------------> Menu
+
 
 
