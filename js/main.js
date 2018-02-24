@@ -52,6 +52,7 @@ jQuery(document).ready(function($) {
 		$('[data-id="' + currentSlideCount + '"]').removeClass('fadeOutRight').addClass('active fadeInLeft');
 	
 		console.log(currentSlideCount);
+		console.log('test');
 	}
 	
 	function changePrev() {
