@@ -2,12 +2,15 @@
 @import "compass/css3/box-shadow";
 @import "compass/css3/border-radius";
 @import "compass/css3/images";
+@import 'compass/css3/filter';
 
 //============ Mixins,variables,modules, buttons, etc. =================
 @import "variables";
+@import "mixins";
 
 // ====== Resets & Base =========
 @import "normalize";
+@import "grid";
 @import "base";
 
 @import "modules";
@@ -65,7 +68,16 @@
 	margin: auto;
 }
 
+.light-gray-bg {
+  background: $tb-gray-light;
+}
+
 ///---- type
+
+h1,h2,h3 {
+  margin: 0;
+}
+
 .fw-400 {
   font-weight: 400;
 }
@@ -95,11 +107,33 @@ h2.section-headline {
 	font-size: .95rem;
     line-height: 1.75rem;
     font-weight: 400;
+    color: $tb-gray;
 }
+
+
+//Filters
+
+.grayscale {
+  @include filter(grayscale(1));
+}
+
+.grayscale-hc {
+  @include filter(grayscale(1) contrast(2));
+}
+
+.blur {
+  @include filter(blur(2px));
+}
+
 
 // ---------------> Primary Layout
 
 #main {
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-open #main {
+  @include filter(blur(12px));
 }
 
 //----------
@@ -115,20 +149,38 @@ h2.section-headline {
   background: white;
   width: 40%;
   .hero-left-bottom {
-   // text-align: center;
    	width: 40%;
-    font-family: $sans;
-    font-weight: 300;
-    letter-spacing: 8px;
-    //font-size: 150px;
     position: absolute;
-    line-height: 8rem;
     bottom: 0;
-   // left: -8px;
-   // opacity: .1;
     .timeline {
-	    width: 80%;
-	    margin: auto;
+      width: 80%;
+      margin: auto;
+      font-weight: 300;
+      letter-spacing: 8px;
+      line-height: 8rem;
+        span {
+          display: inline-block;
+        }
+      .timeline-line {
+        border-top: 1px solid black;
+        width: 60px;
+        margin-right: 4px;
+        margin-left: -3px;
+        //transform: rotate(-45deg);
+        //top: -80px;
+      }
+      .current-slide-count {
+        width: 33px;
+        position: relative;
+        &:before {
+          display: block;
+          content: '';
+          position: absolute;
+          top: 30px;
+          width: 50px;
+          border-top: 6px solid $tb-gray;
+        }
+      }
     }
   }
 }
@@ -141,25 +193,31 @@ h2.section-headline {
     width: 100%;
     height: auto;
     max-width: 100%;
-    filter: grayscale(1) contrast(2.5);
+   // filter: grayscale(1) contrast(2.5);
     transition: all .5s ease;
-    &:hover {
-	    filter: grayscale(0) contrast(1);
-    } 
+    //&:hover {
+	 //   filter: grayscale(0) contrast(1);
+    //}
   }
   .hero-item-bottom {
     position: relative;
     flex-grow: 1;
-    background: $tb-yellow-light;
+    background: $tb-orange;
+    background: linear-gradient(to right, #b52b72 0%, #ce3d4b 50%, #e65926 100%);
+    /* background: linear-gradient(to right, #32cec3 0%, #36b4c7 50%, #3f96d8 100%); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     .hero-item-button {
-      position: absolute;
+      //position: absolute;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      right: 0;
-      width: calc(50% + 30px);
+      //right: 0;
+      //width: calc(50% + 30px);
       height: 100%;
+      color: white;
       .hero-item-button-top {
         //font-family: $sans;
         font-weight: 800;
@@ -170,26 +228,6 @@ h2.section-headline {
         font-size: 1rem;
       }
     }
-    .hero-item-panel {
-      position: absolute;
-      bottom: 0;
-      left: -30px;
-      background: black;
-      outline: 30px solid rgba(255, 197, 78, .35);
-      width: 50%;
-      padding: 40px;
-     // min-height: 300px;
-      ul {
-        list-style: none;
-       // font-family: $sans;
-        color: white;
-        padding: 0;
-        margin: 0;
-        li {
-          padding: 7px 0;
-        }
-      }
-    }
   }
 }
 
@@ -197,32 +235,33 @@ h2.section-headline {
 	width: 80%;
 	margin: 30px auto 0;
 	position: relative;
+
 }
 
 .hero-item {
   &.hero-item-content {
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    visibility: hidden;
-    transition: all .5s ease;
-    &.active {
-    	position: relative;
-	    opacity: 1;
-	    visibility: visible;
+    display: none;
+    &#first {
+      display: block;
     }
     .content-title {
       position: relative;
-      left: -5px;
+     // left: -5px;
       font-family: $sans-alt;
       font-weight: 800;
       font-size: 4.2rem;
+      .dev-icon {
+        font-weight: 400;
+        font-family: $sans;
+        font-size: .8em;
+      }
     }
     .content-description {
       margin-top: 20px;
       font-family: $serif;
       font-size: .95rem;
       line-height: 1.75rem;
+      color: $tb-gray;
     }
   }
 }
@@ -230,6 +269,8 @@ h2.section-headline {
 .hero-item-nav {
   width: 80%;
   margin: auto;
+  position: relative;
+  z-index: 10;
   a {
     text-decoration: none;
     color: black;
@@ -309,18 +350,22 @@ h2.section-headline {
 .main-menu {
   visibility: hidden;
   position: fixed;
-  bottom: 0;
+  bottom: -100%;
   width: 100%;
   height: 0;
   overflow: hidden;
-  background: black;
+  background: rgba(black, .9);
   color: white;
-  transition: height .2s ease-out;
+  transition: all .3s ease-out;
   z-index: 2000;
   &.menu-active {
     visibility: visible;
     display: block;
     height: 100%;
+    bottom: 0;
+  }
+  &.menu-active-out {
+    bottom: 100%;
   }
   .menu-header {
     padding: 25px;
@@ -332,32 +377,42 @@ h2.section-headline {
       top: -7px;
     }
   }
-  .close-menu {
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
+
+  .close-menu-btn {
+   // width: 30px;
+    position: relative;
+    top: -5px;
+    height: 25px;
+    line-height: 25px;
     background: transparent;
-    border: 2px solid rgba(255,255,255, .3);
-    text-align: center;
-    font-size: 1.6rem;
+    //border-right: 2px solid $tb-gray;
+    padding-right: 7px;
+    text-align: right;
+    font-size: .9rem;
     font-weight: 300;
-    @include border-radius(50%);
     cursor: pointer;
     transition: all .2s ease;
-    .close-icon {
-      position: relative;
-      top: -2px;
+    &:after, &:before {
+      display: block;
+      content: "";
+      width: 2px;
+      height: 25px;
+      background: #707e89;
+      position: absolute;
+      right: 0;
+      top: 0;
       transition: all .2s ease;
     }
 
-    &:hover {
-     // background: white;
-      border: 4px solid rgba(255,255,255, .3);
-      color: $tb-yellow;
-      .close-icon {
-        top: -4px;
-      }
 
+    &:hover {
+      padding-right: 20px;
+      &:before {
+        transform: rotate(45deg);
+      }
+      &:after {
+        transform: rotate(-45deg);
+      }
     }
   }
 
@@ -384,6 +439,8 @@ h2.section-headline {
           font-size: 2.4rem;
           font-weight: 800;
           padding: 5px 0;
+          text-decoration: none;
+          color: white;
         }
       }
     }
@@ -391,12 +448,118 @@ h2.section-headline {
 
 }
 
+//____ Home Body Sections
 
-//_____ Header
+.hero-item-panel {
+  position: relative;
+  z-index: 100;
+  //bottom: 0;
+  //left: -30px;
+  background: $tb-blue;
+  color: #fff;
+  //outline: 30px solid rgba(255, 197, 78, .35);
+  outline: 30px solid rgba($tb-blue,0.5);
+  //width: 50%;
+  padding: 40px;
+  // min-height: 300px;
+  ul {
+    list-style: none;
+    // font-family: $sans;
+    // color: white;
+    padding: 0;
+    margin: 0;
+    li {
+      padding: 7px 0;
+    }
+  }
+}
 
-//_____ Footer
+.section-testimonial {
+  width: 80%;
+  margin: auto;
+  .testimonial-title {
+    font-family: $sans-alt;
+    font-size: 2.1rem;
+    font-weight: bold;
+  }
+  .testimonial-body {
+    margin-top: 20px;
+    font-family: $serif;
+    font-size: .95rem;
+    line-height: 1.75rem;
+    color: $tb-gray;
+  }
+  .testimonial-name {
+    margin-top: 15px;
+    &:before {
+      display: inline-block;
+      content: "";
+      width: 40px;
+      height: 3px;
+      background: $tb-orange;
+      margin-right: 5px;
+    }
+  }
+}
 
-// ---------------> Menu
+
+// home recent projects
+
+.project {
+  @include aspect-ratio(4.5,3);
+  background: url('https://spigotdesign.com/wp-content/uploads/2017/12/pcfd-station.jpg') no-repeat center;
+  background-size: cover;
+  .project-inner {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    text-align: center;
+    background: linear-gradient(to right, rgba(#b52b72, .8) 0%, rgba(#ce3d4b, .8) 50%, rgba(#e65926, .8) 100%);
+    color: white;
+    opacity: 0;
+    transition: all .25s ease;
+    &:hover {
+      opacity: 1;
+    }
+    .project-title {
+      font-family: $sans-alt;
+      font-size: 30px;
+    }
+  }
+}
 
 
+//-- #About
+#about {
+  padding: 200px 40px 100px;
+}
+
+//_____ Sections/Grid
+
+.section-row {
+
+}
+.flex-row {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-40 {
+  width: 40%;
+}
+
+.section-60 {
+  width: 60%;
+}
 

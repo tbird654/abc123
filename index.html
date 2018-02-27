@@ -12,8 +12,9 @@
     <!-- Place favicon.ico in the root directory -->
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700|Montserrat:300,400,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
-    
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" />
+
 
 </head>
 <body>
@@ -30,9 +31,9 @@
             <div class="hero-left">
                 <div class="hero-left-header">
                     <div class="brand">
-                        <span class="brand-icon">
-                            <img src="img/bird_icon.png">
-                        </span>
+                        <!--<span class="brand-icon">-->
+                            <!--<img src="img/bird_icon.png">-->
+                        <!--</span>-->
                         <span class="brand-text">
                             <span class="fw-800">TB</span><span class="gray">Creative</span>
                         </span>
@@ -46,11 +47,11 @@
                     </div>
                 </div>
 
-                <div class="hero-content-wrap">
-	                <div data-id="1" class="hero-item hero-item-content active animated">
+                <div class="hero-content-wrap asnavForClass">
+	                <div id="first" class="hero-item hero-item-content active animated">
 	                    <div class="content-title">
 	                        <!--Design <span class="fw-400">+</span> Dev-->
-	                        I'm Dustin
+	                        Welcome
 	                    </div>
 	                    <div class="content-description">
 	                        Business happens differently today, and your website is right there at the center of all the action.
@@ -58,25 +59,22 @@
 	                    </div>
 	                </div>
 	                
-	                <div data-id="2" class="hero-item hero-item-content animated">
+	                <div class="hero-item hero-item-content animated">
 	                    <div class="content-title">
 	                        <!--Design <span class="fw-400">+</span> Dev-->
-	                        I'm Dustin
+	                        UX / UI
 	                    </div>
 	                    <div class="content-description">
 	                        Business happens differently today, and your website is right there at the center of all the action.
 	                        My Focus is on building <em>Progressive Solutions</em> that fit you and your unique business needs.
 	                        Business happens differently today, and your website is right there at the center of all the action.
-	                        My Focus is on building <em>Progressive Solutions</em> that fit you and your unique business needs.
-	                        Business happens differently today, and your website is right there at the center of all the action.
-	                        My Focus is on building <em>Progressive Solutions</em> that fit you and your unique business needs.
 	                    </div>
 	                </div>
 	                
-	                <div data-id="3" class="hero-item hero-item-content animated">
+	                <div class="hero-item hero-item-content animated">
 	                    <div class="content-title">
 	                        <!--Design <span class="fw-400">+</span> Dev-->
-	                        I'm Dustin
+                            Dev <span class="dev-icon">&lt;/&gt;</span>
 	                    </div>
 	                    <div class="content-description">
 	                        Business happens differently today, and your website is right there at the center of all the action.
@@ -84,7 +82,7 @@
 	                    </div>
 	                </div>
                 </div>
-                
+
                 <div class="hero-item-nav">
                     <a href="#" class="hero-nav-btn previous-hero">
                         &lsaquo;
@@ -95,31 +93,25 @@
                 </div>
 
                 <div class="hero-left-bottom">
+
+
+
                     <div class="timeline">
-	                    08----------18
+                        <span class="current-slide-count currentSlideCount">01</span><span class="timeline-line"></span><span>03</span>
                     </div>
                 </div>
 
             </div><!-- hero left -->
 
             <div class="hero-right">
-                <div class="hero-item hero-item-media">
-                    <img src="img/family.jpg" alt="">
+                <div class="hero-item hero-item-media asnavForClass">
+                    <div><img class="grayscale-hc" src="img/family.jpg" alt=""></div>
+                    <div><img src="img/eac-m2.jpg" alt=""></div>
                 </div>
                 <div class="hero-item hero-item-bottom">
-                    <div class="hero-item-panel">
-                        <ul>
-                            <li>Responsive Web Design</li>
-                            <li>Wordpress Theme Design</li>
-                            <li>UX / UI</li>
-                            <li>Traditional</li>
-                            <li>Email</li>
-                            <li>Branding</li>
-                        </ul>
-                    </div>
                     <div class="hero-item hero-item-button">
                         <div class="hero-item-button-top">Interested?</div>
-                        <div class="hero-item-button-bottom">View Case Study &rsaquo;</div>
+                        <div class="hero-item-button-bottom">Let's Talk &rsaquo;</div>
                     </div>
                 </div>
             </div>
@@ -127,23 +119,50 @@
         </div>
     </div>
 
-    <section id="about" class="mt-200">
-        <h1 class="section-headline text-center">
-            About
-        </h1>
-        <h3 class="section-subhead text-center limit-width-600">
-            I am a Web Designer and Front-End Developer with a passion for creating visually appealing and engaging User Experiences.
-        </h3>
+    <section id="intro" class="light-gray-bg">
+        <div class="section-row flex-row">
+            <div class="section-40">
+                <div class="hero-item-panel">
+                    <h2 class="section-headline">
+                        We do all sorts of stuff
+                    </h2>
+                    <ul>
+                        <li>Responsive Web Design</li>
+                        <li>Wordpress Theme Design</li>
+                        <li>Custom Theme Development</li>
+                        <li>Wordpress, C5, Drupal, Aurora</li>
+                        <li>UX / UI</li>
+                        <li>Traditional</li>
+                        <li>Email</li>
+                        <li>Branding</li>
+                        <li>SEO</li>
+                        <li>Site Care</li>
+                        <li>WP Plugin Development</li>
+                        <a href="services.html">View Services &rsaquo;</a>
 
-        <div class="section-body">
-
+                </div>
+            </div>
+            <div class="section-60 flex-center">
+                <div class="section-testimonial">
+                    <div class="testimonial-title">
+                        <img class="primary-logo" alt="EAC Product Development Solutions" src="img/EAC-Primary-Logo.svg">
+                    </div>
+                    <div class="testimonial-body">
+                        From start to finish the whole project went incredibly well. Dustin worked with us to map out a plan,
+                        create a design that we all loved, optimize our content, and execute our ideas in ways we never imagined.
+                        Every time we threw a curve ball Dustin was on it.
+                        It didn't matter if it required custom web development or a simple update to a graphic."
+                    </div>
+                    <div class="testimonial-name"><strong>Anthony Bayerl</strong>, Marketing Manager</div>
+                </div>
+            </div>
         </div>
 
     </section>
 
-    <section id="work">
+    <section id="about" class="light-gray-bg">
         <h2 class="section-headline text-center">
-            Work
+            About
         </h2>
         <h3 class="section-subhead text-center limit-width-600">
             I am a Web Designer and Front-End Developer with a passion for creating visually appealing and engaging User Experiences.
@@ -151,6 +170,51 @@
 
         <div class="section-body">
 
+        </div>
+    </section>
+
+    <section id="work">
+        <h2 class="section-headline text-center">
+            Recent Projects
+        </h2>
+        <h3 class="section-subhead text-center limit-width-600">
+            I am a Web Designer and Front-End Developer with a passion for creating visually appealing and engaging User Experiences.
+        </h3>
+
+        <div class="section-body">
+            <div class="containerff">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <div class="project">
+                            <div class="project-inner">
+                                <div class="project-title">
+                                    EAC | Website
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="project">
+                            <div class="project-inner">
+                                <div class="project-title">
+                                    EAC | Website
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="project">
+                            <div class="project-inner">
+                                <div class="project-title">
+                                    EAC | Website
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -162,15 +226,19 @@
 
         <div class="brand">
             <span class="brand-icon">
-                <img src="img/bird_icon.png">
+                <span class="fw-800">TB</span><span class="gray">Creative</span>
             </span>
             <!--<span class="brand-text">-->
                 <!--<span class="fw-800">TB</span><span class="gray">Creative</span>-->
             <!--</span>-->
         </div>
 
-        <div class="close-menu closeMenu">
-            <span class="close-icon">&times;</span>
+        <!--<div class="close-menu closeMenu">-->
+            <!--<span class="close-icon">&times;</span>-->
+        <!--</div>-->
+
+        <div class="close-menu-btn closeMenu">
+            Close
         </div>
     </div>
 
@@ -178,10 +246,10 @@
         <div class="menu-left">
             <div class="menu-links">
                 <ul>
-                    <li><a href="#">Menu Item Here</a></li>
-                    <li><a href="#">Menu Item Here</a></li>
-                    <li><a href="#">Menu Item Here</a></li>
-                    <li><a href="#">Menu Item Here</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Work</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -209,6 +277,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
 <script src="js/plugins.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <script src="js/main.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
