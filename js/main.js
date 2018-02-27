@@ -5,7 +5,7 @@ $(document).ready(function(){
     $(window).scroll(function() {
         var scroll = $(window).scrollTop();
 
-        if (scroll >= 500) {
+        if (scroll >= 400) {
             header.addClass("attached");
         } else {
             header.removeClass("attached");
@@ -18,12 +18,25 @@ $(document).ready(function(){
 
     $('.menuTrigger').click(function(){
     	$('body').addClass('menu-open');
-        $('.main-menu').removeClass('menu-active menu-active-out').addClass('menu-active');
+        $('.main-menu').velocity({
+            height: "100%",
+            bottom: "0px",
+            display: 'block',
+            visibility: 'visible'
+        });
+       // $('.main-menu').removeClass('menu-active menu-active-out').addClass('menu-active');
     });
 
     $('.closeMenu').click(function(){
-        $('.main-menu').addClass('menu-active-out');
+       // $('.main-menu').addClass('menu-active-out');
         $('body').removeClass('menu-open');
+      //  $('.main-menu').velocity("reverse");
+        $('.main-menu').velocity({
+            height: "0",
+            bottom: "100%",
+           // display: 'block',
+            visibility: 'hidden'
+        });
     });
 
 
@@ -115,7 +128,7 @@ jQuery(document).ready(function($) {
         slidesToScroll: 1,
         // arrows: true,
 		speed: 800,
-         fade: true,
+		fade: true,
         adaptiveHeight: true,
         asNavFor: '.asnavForClass',
         prevArrow: $('.previous-hero'),

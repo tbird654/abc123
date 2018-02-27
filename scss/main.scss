@@ -125,11 +125,12 @@ h2.section-headline {
   @include filter(blur(2px));
 }
 
-
+//adfads
 // ---------------> Primary Layout
 
 #main {
   transition: all 0.3s ease-in-out;
+  transform-style: flat;
 }
 
 .menu-open #main {
@@ -193,6 +194,7 @@ h2.section-headline {
     width: 100%;
     height: auto;
     max-width: 100%;
+    image-rendering: -webkit-optimize-contrast;
    // filter: grayscale(1) contrast(2.5);
     transition: all .5s ease;
     //&:hover {
@@ -284,6 +286,8 @@ h2.section-headline {
   align-items: center;
   justify-content: space-between;
   padding: 25px;
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
   .brand {
       //font-family: $sans;
       .brand-icon {
@@ -354,18 +358,18 @@ h2.section-headline {
   width: 100%;
   height: 0;
   overflow: hidden;
-  background: rgba(black, .9);
+  background: rgba(black, .8);
   color: white;
-  transition: all .3s ease-out;
   z-index: 2000;
+
   &.menu-active {
-    visibility: visible;
-    display: block;
-    height: 100%;
-    bottom: 0;
+    //visibility: visible;
+    //display: block;
+    //height: 100%;
+    //bottom: 0;
   }
   &.menu-active-out {
-    bottom: 100%;
+   // bottom: 100%;
   }
   .menu-header {
     padding: 25px;
@@ -507,6 +511,10 @@ h2.section-headline {
 
 .project {
   @include aspect-ratio(4.5,3);
+  @media (max-width: 991px) {
+    @include aspect-ratio(3,1);
+    margin: 20px;
+  }
   background: url('https://spigotdesign.com/wp-content/uploads/2017/12/pcfd-station.jpg') no-repeat center;
   background-size: cover;
   .project-inner {
@@ -518,18 +526,55 @@ h2.section-headline {
     height: 100%;
     align-items: center;
     justify-content: center;
-    background: transparent;
     text-align: center;
-    background: linear-gradient(to right, rgba(#b52b72, .8) 0%, rgba(#ce3d4b, .8) 50%, rgba(#e65926, .8) 100%);
     color: white;
-    opacity: 0;
     transition: all .25s ease;
-    &:hover {
+    &:before, &:after {
+      position: absolute;
+      z-index: 1;
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0,0,0,.425);
       opacity: 1;
+      transition: all .25s ease;
+    }
+    &:after {
+      background: linear-gradient(to right, rgba(#b52b72, .8) 0%, rgba(#ce3d4b, .8) 50%, rgba(#e65926, .8) 100%);
+      opacity: 0;
     }
     .project-title {
-      font-family: $sans-alt;
-      font-size: 30px;
+      position: relative;
+      z-index: 5;
+      .project-logo {
+        font-family: $sans-alt;
+        font-size: 30px;
+      }
+      .project-extra {
+        font-family: $serif;
+        height: 0;
+        opacity: 0;
+        transition: all .25s ease;
+        &:before {
+          //line divider here
+        }
+      }
+    }
+    &:hover {
+      &:before {
+        opacity: 0;
+      }
+      &:after {
+        opacity: 1;
+      }
+      .project-extra {
+        opacity: 1;
+        height: 30px;
+        transform: translateY(20px);
+      }
     }
   }
 }
