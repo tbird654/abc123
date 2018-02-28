@@ -1,4 +1,5 @@
 // ====== Compass Stuff =========
+@import "compass/css3";
 @import "compass/css3/box-shadow";
 @import "compass/css3/border-radius";
 @import "compass/css3/images";
@@ -129,12 +130,12 @@ h2.section-headline {
 // ---------------> Primary Layout
 
 #main {
-  transition: all 0.3s ease-in-out;
+ // transition: all 0.3s ease-in-out;
   transform-style: flat;
 }
 
 .menu-open #main {
-  @include filter(blur(12px));
+ // @include filter(blur(12px));
 }
 
 //----------
@@ -188,7 +189,7 @@ h2.section-headline {
 .hero-right {
   display: flex;
   flex-direction: column;
-  background: #efefef;
+  //background: #efefef;
   width: 60%;
   img {
     width: 100%;
@@ -241,9 +242,9 @@ h2.section-headline {
 }
 
 .hero-item {
-  &.hero-item-content {
+  &.hero-item-content, .hero-item-media {
     display: none;
-    &#first {
+    &#first, &#first-media {
       display: block;
     }
     .content-title {
@@ -354,22 +355,28 @@ h2.section-headline {
 .main-menu {
   visibility: hidden;
   position: fixed;
-  bottom: -100%;
+ // bottom: -100%;
   width: 100%;
-  height: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: translateY(100%);
   overflow: hidden;
   background: rgba(black, .8);
   color: white;
   z-index: 2000;
+  transition: transform .35s ease;
 
   &.menu-active {
-    //visibility: visible;
+  transform: translateY(0);
+    visibility: visible;
     //display: block;
     //height: 100%;
     //bottom: 0;
   }
   &.menu-active-out {
    // bottom: 100%;
+   transform: translateY(-100%);
   }
   .menu-header {
     padding: 25px;
@@ -509,13 +516,40 @@ h2.section-headline {
 
 // home recent projects
 
+.projects-wrap {
+  @include display-flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+.project-block {
+	-webkit-box-flex: 0;
+    -ms-flex: 0 1 100%;
+    flex: 0 1 100%;
+    flex-basis: 100%;
+    @media (min-width: 992px) {
+	    flex-basis: 50%;
+	 }
+	 @media (min-width: 1367px) {
+	    flex-basis: 33.333333333%;
+	    &.project-block-cta {
+		    flex-basis: 100%;
+	    }
+	 }
+}
+
 .project {
   @include aspect-ratio(4.5,3);
   @media (max-width: 991px) {
     @include aspect-ratio(3,1);
-    margin: 20px;
+    margin: 10px 20px;
   }
-  background: url('https://spigotdesign.com/wp-content/uploads/2017/12/pcfd-station.jpg') no-repeat center;
+  @media (min-width: 1367px) {
+	  &.project-cta {
+		  @include aspect-ratio(5,1);
+	  }
+  }
   background-size: cover;
   .project-inner {
     display: flex;

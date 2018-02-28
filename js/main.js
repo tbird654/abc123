@@ -1,7 +1,28 @@
 $(document).ready(function(){
 
+	
 
-    var header = $(".hero-left-header");
+        
+    var transEffect = Barba.BaseTransition.extend({
+            start: function(){
+              this.newContainerLoading.then(val => this.fadeInNewcontent($(this.newContainer)));
+            },
+            fadeInNewcontent: function(nc) {
+              nc.hide();
+              var _this = this;
+              $(this.oldContainer).fadeOut(1000).promise().done(() => {
+                nc.css('visibility','visible');
+                nc.fadeIn(1000, function(){
+                  _this.done();
+                })
+              });
+            }
+        });
+        Barba.Pjax.getTransition = function() {
+          return transEffect;
+        }
+        Barba.Dispatcher.on('transitionCompleted', function(currentStatus, oldStatus, container) {
+		    var header = $(".hero-left-header");
     $(window).scroll(function() {
         var scroll = $(window).scrollTop();
 
@@ -17,34 +38,31 @@ $(document).ready(function(){
     // });
 
     $('.menuTrigger').click(function(){
+    	$('#main').velocity({ filter: "blur(12px)" });
     	$('body').addClass('menu-open');
-        $('.main-menu').velocity({
-            height: "100%",
-            bottom: "0px",
-            display: 'block',
+        /*
+$('.main-menu').velocity({
+            transform: "translateY(200px)",
             visibility: 'visible'
         });
-       // $('.main-menu').removeClass('menu-active menu-active-out').addClass('menu-active');
+*/
+        $('.main-menu').removeClass('menu-active menu-active-out').addClass('menu-active');
     });
 
-    $('.closeMenu').click(function(){
-       // $('.main-menu').addClass('menu-active-out');
+    $('.closeMenu, .menu-links a').click(function(){
+        $('.main-menu').addClass('menu-active-out');
+       $('#main').velocity("reverse");
         $('body').removeClass('menu-open');
-      //  $('.main-menu').velocity("reverse");
-        $('.main-menu').velocity({
-            height: "0",
-            bottom: "100%",
-           // display: 'block',
+        
+        /*
+$('.main-menu').velocity({
+            transform: 'translateY(-100%)',
             visibility: 'hidden'
         });
+*/
     });
 
 
-}); //end doc ready
-
-
-
-jQuery(document).ready(function($) {
 
   /*
  var interval;
@@ -123,7 +141,7 @@ jQuery(document).ready(function($) {
     });
 
 
-    $('.hero-item-media').slick({
+    $('.hero-item-medias').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
         // arrows: true,
@@ -135,5 +153,13 @@ jQuery(document).ready(function($) {
         nextArrow: $('.next-hero'),
 		//rtl: true,
     });
+    
+		}); //// end barba dispatcher
+        
+        Barba.Pjax.start();
+        Barba.Prefetch.init();
 
-});    
+    
+
+}); 
+
