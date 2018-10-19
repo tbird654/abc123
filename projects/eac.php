@@ -24,7 +24,7 @@ include('../parts/header.php');
                         <strong>EAC Product Development Solutions</strong> provides innovative solutions that transform the way companies design, manufacture, connect to, and service their products.
                     </h2>
                     <div class="project-areas center-all mt-20">
-                        Strategy / UX/UI / Design / Front-End Dev
+                        Strategy / UX/UI / IA / Design / Dev
                     </div>
                     <div class="center-all mt-20">
                         <a class="live-site-link" href="https://eacpds.com">View Live Site</a>

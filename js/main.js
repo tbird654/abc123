@@ -12,6 +12,15 @@ $(document).ready(function(){
             }
         });
 
+         // Making work bar fade a bit after scroll
+         // $(document).scroll(function() {
+         //     console.log('test');
+         //     var dHeight = $(this).height()-$(window).height();
+         //     if (dHeight >= $(this).scrollTop()) {
+         //         $('.work-bar').css('background', 'rgba(0,0,0,' + $(this).scrollTop() / dHeight + ')');
+         //     }
+         // });
+
 
         $('.menuTrigger').click(function(){
             $('#main').velocity({ filter: "blur(12px)" });
@@ -133,4 +142,3 @@ $(document).ready(function(){
 	Barba.Prefetch.init();
 
 });  // end doc ready
-

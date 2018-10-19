@@ -17,14 +17,14 @@ include('../parts/header.php');
             <div id="main" class="work-layout">
                 <header>
                     <div class="work-intro">
-                        <h1 class="section-headline text-center mt-75">
-                            <img class="primary-logo" alt="Blog App" src="projects/img/blog/blog-icon.png">
+                        <h1 class="section-headline text-center mt-50">
+                            <img class="primary-logo" alt="MINDBODY" src="projects/img/mindbody/MB-logo-horizontal-primary-radiance.svg" style="width: 300px;">
                         </h1>
                         <h2 class="section-subhead text-center limit-width-700 mt-20">
                             EAC Product Development Solutions provides innovative solutions that transform the way companies design, manufacture, connect to, and service their products.
                         </h2>
                         <div class="project-areas center-all mt-20">
-                            Research / Strategy / UX/UI Design / Prototyping / Front-End Dev / Product Owner/Manager
+                            Strategy / UX/UI Design / Front-End Dev
                         </div>
 
                         <section class="container mt-75">
@@ -60,19 +60,19 @@ include('../parts/header.php');
                 </header>
 
                 <main class="mt-75">
-<!--                    <section class="work-item work-text-over">-->
-<!--                        <div class="work-item-bg" style="background-image: url('projects/img/eac/eac-thingworx-bg.jpg');">-->
-<!--                            <div class="work-item-bg-content">-->
-<!--                                <div class="the-goal">-->
-<!--                                    Project Mission-->
-<!--                                </div>-->
-<!--                                <div class="work-item-bg-body">-->
-<!--                                    Deliver a custom responsive experience that was both unique, and highly intuitive for customers visiting the site from all points in the sales funnel.-->
-<!--                                    Make it beautiful. Make it maintainable.-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </section>-->
+                    <!--                    <section class="work-item work-text-over">-->
+                    <!--                        <div class="work-item-bg" style="background-image: url('projects/img/eac/eac-thingworx-bg.jpg');">-->
+                    <!--                            <div class="work-item-bg-content">-->
+                    <!--                                <div class="the-goal">-->
+                    <!--                                    Project Mission-->
+                    <!--                                </div>-->
+                    <!--                                <div class="work-item-bg-body">-->
+                    <!--                                    Deliver a custom responsive experience that was both unique, and highly intuitive for customers visiting the site from all points in the sales funnel.-->
+                    <!--                                    Make it beautiful. Make it maintainable.-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </section>-->
 
                     <section class="work-item work-image-only blog-sec-1 mt-75">
                         <div class="container">
